@@ -1,0 +1,27 @@
+version: '2.24.6'
+services:
+  my-app:
+    build: . 
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+
+  mongodb:
+    image: mongo:4.4.29-focal
+    ports:
+      - 27017:27017
+    env_file:
+      - .env
+    volumes:
+      - ./db:/data/db
+        
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+ 
