@@ -1,15 +1,24 @@
 pipeline{
     agent any
     stages{
-        stage("build"){
-            steps{
-                echo "hello world"
+        stage("One")
+        {
+        steps{
+                echo "executing stage one"
             }
         }
-        stage("deploy"){
+        stage("Two"){
             steps{
-                echo "deployed"
+                    echo "executing stage 2"  
+            //  echo "Build Stage is executing"
+            //    echo "Building version ${VERSION}"
             }
         }
-    }
+        stage( "test"){
+            steps{
+                echo "Test Stage is executing"
+            }
+        }
+  
+}
 }
